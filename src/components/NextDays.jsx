@@ -7,11 +7,10 @@ import { useEffect, useState } from "react";
 
 const API_KEY = '9c0ece9ecabc211f28776c581ffc21e8';
 
-const NextDays = ({ getIcon, windowWidth, setWindowWidth }) => {
+const NextDays = ({ lat, lon, getIcon, windowWidth, setWindowWidth }) => {
     const [data, setData] = useState(null);
     const [city, setCity] = useState("Roma");
-    const [lat, setLat] = useState(0);
-    const [lon, setLon] = useState(0);
+    
 
 
     useEffect(() => {
@@ -27,6 +26,7 @@ const NextDays = ({ getIcon, windowWidth, setWindowWidth }) => {
             .then((output) => {
                 setData(output.list);
                 setCity(output.city.name);
+                console.log(output)
             })
             .catch((err) => console.log("ERROR!", err));
     }, [lon, lat]);
